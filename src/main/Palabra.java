@@ -1,3 +1,5 @@
+package main;
+
 public class Palabra {
 	private String value;
 	
@@ -19,5 +21,12 @@ public class Palabra {
  
     public char getLetraFinal() {
     	return this.value.charAt(this.value.length() - 1);
+    }
+
+    @Override
+    public String toString() {
+        return "Palabra{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }
