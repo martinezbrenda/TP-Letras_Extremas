@@ -1,42 +1,43 @@
 package main;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class AnalizadorLetras {
 	Map<Character, LetraExtrema> letrasAnalizar = new HashMap<>();
 
-	public void obtenerUsosDeLetraExtremaMasUtilizada(List<Palabra> palabras) {
+	public Resultado obtenerUsosDeLetraExtremaMasUtilizada(Palabra[] palabras) {
 		for (Palabra palabra: palabras) {
-			agregarPalabraParaLetraExtrema(letrasAnalizar, palabra, palabra.getLetraInicial());
-			agregarPalabraParaLetraExtrema(letrasAnalizar, palabra, palabra.getLetraFinal());
+			agregarRepeticionDePalabraParaLetraExtrema(palabra, palabra.getLetraInicial());
+			agregarRepeticionDePalabraParaLetraExtrema(palabra, palabra.getLetraFinal());
 		}
 
-		// obtener letras extremas mas usadas
+		int maximasRepeticiones = 0;
+		List<Character> maximosCaracteres = new ArrayList<>();
+		Set<String> palabrasMaximas = new HashSet<>();
+		for (Map.Entry<Character, LetraExtrema> letra : letrasAnalizar.entrySet()) {
+			int repeticiones = letra.getValue().getRepeticiones();
 
-		// devolver palabras asociadas a la o las letras extremas mas usadas
+			if (repeticiones > maximasRepeticiones) {
+				maximasRepeticiones = repeticiones;
+				maximosCaracteres.clear();
+				palabrasMaximas.clear();
+			}
+
+			if (repeticiones == maximasRepeticiones) {
+				maximosCaracteres.add(letra.getKey());
+				palabrasMaximas.addAll(letra.getValue().getPalabrasAsociadas());
+			}
+		}
+
+		return new Resultado(maximosCaracteres, palabrasMaximas);
 	}
 
-	private void agregarPalabraParaLetraExtrema(Map<Character, LetraExtrema> letrasAnalizar, Palabra palabra, char letraExtrema) {
+	private void agregarRepeticionDePalabraParaLetraExtrema(Palabra palabra, char letraExtrema) {
 		if (!letrasAnalizar.containsKey(letraExtrema)) {
 			letrasAnalizar.put(letraExtrema, new LetraExtrema(palabra.getValue()));
 		}
 		else {
 			letrasAnalizar.get(letraExtrema).agregarRepeticion(palabra.getValue());
 		}
-	}
-
-	public void obtenerLetrasMasRepeticiones() { //List[] obtenerLetrasMasRepeticiones () {
-		// Metodo de ordenamiento fusion
-		
-		/*do while	-> Obtenes mayor
-				   	-> Agrearlo a la lista
-				   	-> Sacas del hashmap
-				   	-> Obtenes el 2do mayor
-				   	-> Comparas
-				   	-> Si son != terminas, sino seguis la iteacion
-		*/		   		
 	}
 }

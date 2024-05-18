@@ -6,9 +6,9 @@ public class Main {
         Palabra[] palabras = archivo.getPalabras();
 
         AnalizadorLetras analizadorLetras = new AnalizadorLetras();
+        Resultado resultado = analizadorLetras.obtenerUsosDeLetraExtremaMasUtilizada(palabras);
 
-        // pasar palabras extremas - OJO - no se pueden repetir las palabras - armar un test para esto
-        //archivo.escribir(letrasExtremas, palabrasExtremas);
+        archivo.escribir(resultado.getCaracterMasRepetidos(), resultado.getPalabrasDeCaracteresMasRepetidos());
     }
 
 }

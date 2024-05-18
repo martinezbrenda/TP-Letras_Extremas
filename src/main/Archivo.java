@@ -44,7 +44,7 @@ public class Archivo {
         }
     }
 
-    public void escribir(List<Character> letrasExtremas, List<String> palabras) {
+    public void escribir(List<Character> letrasExtremas, Set<String> palabras) {
         FileWriter archivo;
         PrintWriter writer;
 
