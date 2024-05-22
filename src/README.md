@@ -4,19 +4,19 @@
 
 `ls = letras extremas mas repetidas. ls <= l`
 
-`s = palabras asociadas a letra extras mas repetida. s <= n` 
+`s = palabras asociadas a letra extras más repetida. s <= n` 
 
 * Para lectura `n`
 * Para analizar
   * contar la cantidad de repeticiones `n`
-  * obtener la/s letras mas repetidas con sus palabras asociadas `l`
+  * obtener la/s letras más repetidas con sus palabras asociadas `l`
 * Para escritura `ls + s`
 
-Complejidad total = `O(n)`
+Complejidad computacional total = `O(n)`
 
-Dado que la entrada maxima es de 250 palabras y esto se considera un numero bajo para la complijidad computacional del algoritmo (`O(n)`). 
-Consideramos optima la complejidad en funcion del tiempo.
-Mientras que en relacion de espacio, se utilizan como maximo 4 listas en simultaneo para el manejo de los datos. 
-De igual forma que con el tiempo, consideramos que la cantidad de datos posibles es depreciable.
+Dado que la entrada máxima del archivo es de 250 palabras y se considera un número bajo para la complejidad computacional (`O(n)`) del algoritmo, consideramos óptima la complejidad en función del tiempo.
+
+Mientras que en términos de espacio, se utilizan como máximo 4 listas en simultáneo para el manejo de los datos. 
+De igual forma que con el tiempo, consideramos que la cantidad de datos posibles es despreciable.
 
 
