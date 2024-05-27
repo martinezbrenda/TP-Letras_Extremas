@@ -1,11 +1,17 @@
 package main;
 
+import main.Exception.analizadorLetrasException;
+
 import java.util.*;
 
 public class AnalizadorLetras {
 	Map<Character, LetraExtrema> letrasAnalizar = new HashMap<>();
 
 	public Resultado obtenerUsosDeLetraExtremaMasUtilizada(Palabra[] palabras) {
+		int cantidadDePalabras = palabras.length;
+		if (cantidadDePalabras > 250)
+			throw new analizadorLetrasException("No es posible analizar archivos con mas de 250 palabras\n");
+
 		for (Palabra palabra: palabras) {
 			agregarRepeticionDePalabraParaLetraExtrema(palabra, palabra.getLetraInicial());
 			agregarRepeticionDePalabraParaLetraExtrema(palabra, palabra.getLetraFinal());
